@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 mt-3">
+      <div class="img-thumbnail" style="background-color: skyblue">
+        <img *ngIf="gender==='M'" class="rounded-circle img-thumbnail custmSize" alt="profilePic"
+          style="box-sizing: border-box" src=".\assets\boy-image.jfif" data-holder-rendered="true" />
+        <img *ngIf="gender==='F'" class="rounded-circle img-thumbnail custmSize" alt="profilePic"
+          style="box-sizing: border-box" src=".\assets\girl-image.jfif" data-holder-rendered="true" />
+        <br />
+        <mat-divider class="mt-3"></mat-divider>
+        <br />
+        <div class="img-thumbnail" style="text-align: center">
+          {{ username }}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 mt-3">
+      <div class="img-thumbnail" style="background-color: whitesmoke; height: 660px; overflow-y: auto">
+        <div *ngIf="isViewAllTweet || isViewMyTweet">
+          <app-post-tweet></app-post-tweet>
+        </div>
+        <div class="mt-3" *ngIf="isViewAllTweet">
+          <app-view-all-tweet></app-view-all-tweet>
+        </div>
+        <div *ngIf="isViewMyTweet">
+          <app-view-tweet></app-view-tweet>
+        </div>
+        <div *ngIf="isViewAllUser">
+          <app-all-user></app-all-user>
+        </div>
+        <div *ngIf="isSearchUser" class="img-thumbnail">
+          <app-search-user></app-search-user>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 mt-3 ml-3">
+      <div class="col-sm-9">
+        <button (click)="onIsviewALLTweet()" class="btn btn-success col-sm-12 mt-2" [disabled]="isViewAllTweet">View
+          All Tweet <i class="bi bi-twitter"></i></button>
+        <button (click)="onIsviewMyTweet()" class="btn btn-success col-sm-12 mt-2" [disabled]="isViewMyTweet">View
+          My Tweet <i class="bi bi-twitter"></i></button>
+        <button (click)="onIsviewALLuser()" class="btn btn-success col-sm-12 mt-2" [disabled]="isViewAllUser">View
+          All User<i class="bi bi-person-fill"></i> </button>
+        <button (click)="onIsSearchUser()" class="btn btn-success col-sm-12 mt-2" [disabled]="isSearchUser">Search
+          User <i class="bi bi-person-fill"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

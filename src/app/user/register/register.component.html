@@ -1,0 +1,44 @@
+<div class="row" style="margin-top: 20px;">
+    <div class="colm-logo">
+        <img src=".\assets\LogoTweetApp.png" alt="Logo" width="250px" height="250px"
+            style="margin-left: 60px; margin-bottom: 20px" />
+        <h2>TweetApp helps you connect and share with the people in your life.</h2>
+    </div>
+    <div class="colm-form">
+        <div class="form-container">
+            <form (submit)="submit()" [formGroup]="registerForm">
+                <input formControlName="email" type="text" class="form-control mt-2" placeholder="Email" />
+                <input formControlName="firstName" type="text" class="form-control mt-2" placeholder="First Name" />
+                <input formControlName="lastName" type="text" class="form-control mt-2" placeholder="Last Name" />
+                <input formControlName="mobilePhone" type="text" class="form-control" placeholder="Phone Number" />
+                <div style="margin-top: 12px;margin-bottom: 12px;">
+                    <mat-radio-group formControlName="gender" type="text" class="form-control mt-2" class="margin-left">
+                        <mat-radio-button value="M" style="margin-left: 10px">
+                            Male
+                        </mat-radio-button>
+                        <mat-radio-button value="F" style="margin-left: 10px">
+                            Female
+                        </mat-radio-button>
+                        <mat-radio-button value="O" style="margin-left: 10px">
+                            other
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <mat-form-field class="full-width" style="width: 360px;">
+                    <mat-label style="margin-left: 10px">Date Of Birth</mat-label>
+                    <input formControlName="dob" class="form-control" matInput [matDatepicker]="picker" [min]="minDate"
+                        [max]="maxDate" placeholder="MM/DD/YYYY" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <input formControlName="password" type="password" class="form-control mt-2" placeholder="password" />
+                <input formControlName="rePassword" type="password" class="form-control mt-2"
+                    placeholder="confirm password" />
+                <input type="submit" value="Register" class="btn btn-primary col-sm-12 mt-3" />
+                <a routerLink="/login">Already Have Account?</a>
+            </form>
+            <mat-progress-bar *ngIf="displayLoading" class="mt-3" mode="indeterminate"></mat-progress-bar>
+            <div *ngIf="displayError" class="alert alert-danger mt-3">Invalid Input</div>
+        </div>
+    </div>
+</div>

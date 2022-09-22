@@ -1,0 +1,44 @@
+<div class="card mb-3" style="max-width: 99%">
+  <div class="row g-0">
+    <div class="card-body">
+      <input matInput type="text" class="col-sm-12 form-control mt-2 " placeholder="Search By Name" #searchName />
+      <button (click)="search(searchName.value)" [disabled]="!isSearchButtonEnabled(searchName.value)"
+        class="btn btn-success col-sm-12 mt-2">
+        Search <i class="bi bi-search"></i>
+      </button>
+      <mat-progress-bar *ngIf="displayLoading" class="mt-3" mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+  <div *ngIf="true" class="img-thumbnail mt-2" style="background-color: whitesmoke; height: 460px; overflow-y: auto">
+    <div>
+      <div *ngIf="users?.length == 0" class="card-body">
+        <p style="text-align: center;">
+          No User Found !!
+        </p>
+      </div>
+
+      <div *ngFor="let user of users" class="card mb-3 mt-1" style="max-width: 99%;">
+        <div class="row g-0">
+          <div class="col-md-2">
+            <img *ngIf="user.gender==='M'" class="rounded-circle img-thumbnail custmSize" alt="profilePic"
+              style="box-sizing: border-box" src=".\assets\boy-image.jfif" data-holder-rendered="true" />
+            <img *ngIf="user.gender==='F'" class="rounded-circle img-thumbnail custmSize" alt="profilePic"
+              style="box-sizing: border-box" src=".\assets\girl-image.jfif" data-holder-rendered="true" />
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h4 *ngIf="user.isActive" class="card-title" style="color: green; font-weight: bold;">Active</h4>
+              <h4 *ngIf="!user.isActive" class="card-title" style="color: darkred; font-weight: bold;"> Away :
+                {{user.lastSeen | timeAgo}}</h4>
+              <p class="card-text">
+                Name : {{user.firstName}} {{user.lastName}}
+              </p>
+              <p class="card-text"><small class="text-muted">Gender : {{user.gender}}</small></p>
+              <p class="card-text"><small class="text-muted">Id : {{user.email}}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
